@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/init.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="operation-header">
+            <div class="h-logo">
+                <img src="./images/logoother-2.png" alt="">
+            </div>
+            <div class="h-title"></div>
+        </div>
+        <div class="operation-main">
+            <div class="box">
+                <img class="header" src="./images/header.jpg" alt="">
+                <div class="bg"></div>
+                <div class="pre"></div>
+                <div class="next"></div>
+            </div>
+            <input type="file" name='avatar' id="avatar" style="display:none">
+            <div class="download">
+                <span>保存头像</span>
+            </div>
+        </div>
+        <div class="operation-done">
+            <img src="./images/act-done-happy.png" alt="">
+        </div>
+        <div class="operation-logo">
+            <img src="./images/logotx-1.png" alt="">
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.min.js"></script>
+    <script src="./js/html2canvas.min.js"></script>
+    <script src="./js/utils.js"></script>
+</body>
+<script>
+    $(function () {
+        var index = 0;
+        var bgArr = [{
+                url: './images/bg1.png',
+                position: 'right',
+                size: 'cover'
+            },
+            {
+                url: './images/bg2.png',
+                position: 'right',
+                size: 'contain'
+            },
+            {
+                url: './images/bg3.png',
+                position: 'left',
+                size: 'contain'
+            }
+        ]
+        var $bg = $(".box .bg");
+        $(".pre").click(function () {
+            index = index == 0 ? bgArr.length - 1 : --index;
+            var {
+                url,
+                position,
+                size
+            } = bgArr[index]
+            $bg.css({
+                'background-image': `url(${url})`,
+                'background-position': position,
+                'background-size': size,
+            })
+        })
+        $(".next").click(function () {
+            index = index == bgArr.length - 1 ? 0 : ++index;
+            var {
+                url,
+                position,
+                size
+            } = bgArr[index]
+            $bg.css({
+                'background-image': `url(${url})`,
+                'background-position': position,
+                'background-size': size,
+            })
+        })
+        $(".download").click(function () {
+            html2canvas(document.querySelector('.box'), {
+                chinese: true
+            }).then(canvas => {
+                var url = canvas.toDataURL(); //图片地址
+                var name = new Date().getTime() + ".png";
+                downloadFile(name, url);
+            })
+        })
+        $(".box").click(function (e) {
+            if (e.target.className == 'pre' || e.target.className == 'next') {
+                return
+            }
+            $("#avatar").trigger('click')
+        })
+        $("#avatar").change(function () {
+            var file = this.files[0]
+            file2base64(file).then((base64) => {
+                $(".header").attr('src', base64)
+            })
+        })
+    })
+</script>
+
+</html>

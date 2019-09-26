@@ -1,0 +1,125 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    height: 100vh;
+    background: url(../images/20190829-bg.png) no-repeat;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+}
+
+.operation-header {
+    margin-top: 1.8rem;
+    text-align: center;
+}
+
+.h-logo {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.h-logo img {
+    height: 1.5rem;
+}
+
+.h-title {
+    margin: 0 auto;
+    margin-top: .5rem;
+    width: 13.125rem;
+    height: 6.3rem;
+    background: url(../images/20190906-logo2.png) no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.operation-done {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.operation-done img {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    height: 4.5rem;
+}
+
+.operation-logo {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.operation-logo img {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    height: 1rem;
+}
+
+.operation-main {
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.operation-main .box {
+    height: 7rem;
+    width: 7rem;
+    background: #fff;
+    position: relative;
+}
+
+.operation-main .box .pre {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    left: -70px;
+    top: calc(50% - 30px);
+    border-right: 7px solid #fff;
+    border-top: 7px solid #fff;
+    transform: rotate(-135deg);
+    cursor: pointer;
+}
+
+.operation-main .box .next {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    right: -70px;
+    top: calc(50% - 30px);
+    border-right: 7px solid #fff;
+    border-top: 7px solid #fff;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.box img.header {
+    width: 100%;
+    height: 100%;
+}
+
+.box div.bg {
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    bottom: 0;
+    background-image: url(../images/bg1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.operation-main .download {
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: 30px;
+    background: #673ab7;
+    border: 1px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
